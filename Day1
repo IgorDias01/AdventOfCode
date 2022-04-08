@@ -1,0 +1,105 @@
+//java
+//Part1
+
+/ import necessary packages and classes
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+ 
+public class Day1 {
+    // add throws to main method to handle exceptions
+    public static void main(String[] args)
+        throws IOException
+    {
+        List<String> listOfStrings
+            = new ArrayList<String>();
+       
+        // load the data from file
+        listOfStrings
+            = Files.readAllLines(Paths.get("C:\\Test\\Day1.txt"));
+       
+        // print each line of string in array
+        for (String eachString : listOfStrings) {
+            System.out.println(eachString);
+        }
+                System.out.println("--------------------");
+
+
+        int count = 0;
+          for(int i= 1;i < listOfStrings.size();i++)
+        {
+            int first = Integer.parseInt(listOfStrings.get(i-1));
+            int second = Integer.parseInt(listOfStrings.get(i));
+            int tird = Integer.parseInt(listOfStrings.get((i-1)+1+1));
+            int forth = Integer.parseInt(listOfStrings.get((i-1)+1+1+1));
+            int conta1=first+second+tird;
+            int conta2=second+tird+forth;
+            System.out.println("1");
+            System.out.println(conta1);
+            System.out.println("2");
+            System.out.println(conta2);
+            System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+            if(conta1>conta2)
+            {
+                count++;
+            }
+            
+        }
+          System.out.println(count);
+}
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//Part 2
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+ 
+public class Day1Part2 {
+//     add throws to main method to handle exceptions
+    public static void main(String[] args)
+        throws IOException
+    {
+        List<String> listOfStrings
+            = new ArrayList<String>();
+       
+//         load the data from file
+        listOfStrings
+            = Files.readAllLines(Paths.get("C:\\Test\\Day1.txt"));
+       
+//         print each line of string in array
+        for (String eachString : listOfStrings) {
+            System.out.println(eachString);
+        }
+                System.out.println("--------------------");
+
+
+        int count = 0;
+          for(int i=0; i < listOfStrings.size(); i++)
+        {
+          int first = Integer.parseInt(listOfStrings.get(i+1));
+          int second = Integer.parseInt(listOfStrings.get(i+1));
+          int third = Integer.parseInt(listOfStrings.get(i+2));
+          int forth = Integer.parseInt(listOfStrings.get(i+3));
+          int conta1=first+second+third;
+          int conta2=second+third+forth;
+            
+            System.out.println("1: " + first);
+            System.out.println("2: " + second);
+            System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+            if(conta1 < conta2)
+            {
+                count++;
+            }
+            
+        }
+          System.out.println(count);
+}
+    }
+
+
