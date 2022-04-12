@@ -1,0 +1,173 @@
+//Java
+Part1
+import java.io.IOException;
+   import java.util.List;
+import java.util.ArrayList;
+import java.lang.String;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+public class SkipElement{
+
+    public static void main(String arg[]) throws IOException, java.lang.StringIndexOutOfBoundsException
+    {
+   
+        List<String> list=new ArrayList<>();
+        list = Files.readAllLines(Paths.get("C:\\Test\\Day3.txt"));
+        System.out.print("Elements of list are:");
+        System.out.println(list);
+        
+        StringBuilder strbul=new StringBuilder();
+        for(String str : list)
+        {
+            strbul.append(str);
+            
+        }
+        String str=strbul.toString();
+        System.out.println("Converted String is " + str);
+        int count1=0;
+        int count12=0;
+        int count2=0;
+         int count13=0;
+        int count3=0;
+         int count14=0;
+        int count4=0;
+         int count15=0;
+        int count5=0;
+         int count16=0;
+        int count6=0;
+         int count17=0;
+        int count7=0;
+         int count18=0;
+        int count8=0;
+         int count19=0;
+        int count9=0;
+         int count20=0;
+        int count10=0;
+         int count21=0;
+        int count11=0;
+         int count22=0;
+        
+        
+        
+//************************************************************************************************************************//
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a =i*11;
+            int b = a+i+11;
+            char c1 = str.charAt(b);
+            if (c1 == '1')
+            {
+                count1++;
+                
+            }
+            else
+            {
+                count12++;
+            }
+                System.out.println(count1);
+        }
+    ;
+        
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+1;
+            char c2 = str.charAt(b);
+            if (c2 == '1')
+            {
+                count2++;
+                
+            }
+            else
+            {
+                count13++;
+            }
+        }
+        
+        System.out.println(count2);
+        System.out.println(count13);
+           
+        
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+2;
+            char c3 = str.charAt(b);
+            if (c3 == '1')
+            {
+                count3++;
+                
+            }
+            else
+            {
+                count14++;
+            }
+        }
+        
+        System.out.println(count2);
+        System.out.println(count13);
+           
+        
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+3;
+            char c4 = str.charAt(b);
+           
+        }
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+4;
+            char c5 = str.charAt(b);
+           
+        }
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+5;
+            char c6 = str.charAt(b);
+            
+        }
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+6;
+            char c7 = str.charAt(b);
+            
+        }
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+7;
+            char c8 = str.charAt(b);
+       
+        }
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+8;
+            char c9 = str.charAt(b);
+           
+        }
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+9;
+            char c10 = str.charAt(b);
+           
+        }
+        for(int i=1 ; i < str.length(); i++) 
+        {
+            int a = i*11;
+            int b = a+i+10;
+            char c11 = str.charAt(b);
+            
+            
+        }
+        
+        
+    }
+
+}
+//*****************************************************************************************************************************************************************//
