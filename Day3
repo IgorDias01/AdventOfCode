@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.lang.String;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-public class SkipElement{
+public class Day3{
 
     public static void main(String arg[]) throws IOException, java.lang.StringIndexOutOfBoundsException
     {
