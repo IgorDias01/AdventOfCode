@@ -1,54 +1,105 @@
-//Java
-//13-04-2022
+//1 class
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
- 
+import java.util.List;
+import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 public class SkipElement
-{   
-    public static void main(String[] args) throws IOException
-    {   
-        BufferedReader reader1 = new BufferedReader(new FileReader("C:\\Test\\Day4.txt"));   
-        BufferedReader reader2 = new BufferedReader(new FileReader("C:\\Test\\Comparasion.txt"));
-        String line1 = reader1.readLine();
-        String line2 = reader2.readLine();
-        boolean areEqual = true;
-         
-        int lineNum = 1;   
-         
-        while (line1 != null || line2 != null)
+{
+
+    public static void main(String arg[]) throws IOException, java.lang.StringIndexOutOfBoundsException
+    {
+
+        List<String> day4FileContent = new ArrayList<>();
+        day4FileContent = Files.readAllLines(Paths.get("C:\\Test\\Day4.txt"));      
+        String[] bingoNum = day4FileContent.get(0).split(",");
+
+        List<cartao> cartoes = new ArrayList<>();
+        
+        cartao cartao = new cartao();
+        int posicao=0;
+        
+        for (int i = 2; i < day4FileContent.size(); i++) 
         {
-            if(line1 == null || line2 == null)
+                      if( day4FileContent.get(i).length() == 0)
             {
-                areEqual = false;
-                break;
+                cartoes.add(cartao);
+                posicao=0;
+                cartao = new cartao();
             }
-            else if(! line1.equalsIgnoreCase(line2))
-            {
-                areEqual = false;
-                 
-                break;
+            
+            String[] linha = day4FileContent.get(i).split(" ");
+            
+            for (int j = 0; j < linha.length; j++) 
+            {  
+                if(linha[j].length()==0) continue;
+                cartao.AddElemento(Integer.parseInt(linha[j]), posicao);
+                posicao++;
             }
-             
-            line1 = reader1.readLine();
-             
-            line2 = reader2.readLine();
-             
-            lineNum++;
         }
-         
-        if(areEqual)
-        {
-            System.out.println("The Solution Line");
+        cartoes.add(cartao);
+        
+        for (int i = 0; i < cartoes.size(); i++) 
+        {  
+            cartoes.get(i).Imprimir();
+            System.out.println("");
         }
-        else
-        {
-            System.out.println("Two files have different content. They differ at line "+lineNum);
-            System.out.println("File1 has "+line1+" and File2 has "+line2+" at line "+lineNum);
-        }
-         
-        reader1.close();
-        reader2.close();
+        
     }
 }
+//*****************************************************************************************************************************************************************//
+//2 Class
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class cartao 
+{
+    List<cartaoElemento> elementos = new ArrayList<>();
+    
+    public void AddElemento(int valor, int posicao)
+    {
+        elementos.add(new cartaoElemento(valor,posicao));
+    }
+    
+    public void Imprimir()
+    {
+        for (int i = 0; i < elementos.size(); i++) 
+        {
+            System.out.print(elementos.get(i).Imprimir() + " ");
+            if((i+1)%5==0)
+                System.out.println("");
+        }
+    } 
+}
+//*****************************************************************************************************************************************************************//
+
+//3 class
+
+public class cartaoElemento 
+{
+    int valor;
+    int posicao;
+    boolean jaSaiu;
+    
+    public cartaoElemento(int valor, int posicao)
+    {
+        this.valor = valor;
+        this.posicao = posicao;
+    }
+    
+    public void MarcarComoNumeroSaido()
+    {
+       jaSaiu = true;
+    }
+    public String Imprimir()
+    {
+        String output = String.valueOf(valor);
+        if(jaSaiu)
+            output += "|";
+        
+        return output;
+    }
+}
+
