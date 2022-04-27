@@ -77,12 +77,18 @@ public class cartao
 
 //3 class
 
-public class cartaoElemento 
-{
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class cartaoElemento {
     int valor;
     int posicao;
     boolean jaSaiu;
-    
+ 
     public cartaoElemento(int valor, int posicao)
     {
         this.valor = valor;
@@ -90,16 +96,51 @@ public class cartaoElemento
     }
     
     public void MarcarComoNumeroSaido()
-    {
-       jaSaiu = true;
+    {  
+        jaSaiu = true;             
     }
-    public String Imprimir()
-    {
-        String output = String.valueOf(valor);
-        if(jaSaiu)
-            output += "|";
-        
-        return output;
+    public String Imprimir()throws IOException
+ {
+       int zero = 0; 
+       List<String> day4Comparasion = new ArrayList<>();
+       day4Comparasion = Files.readAllLines(Paths.get("C:\\Test\\Comparasion.txt")); 
+       String output = String.valueOf(valor);
+       List<Integer> listFile = day4Comparasion.stream().map(Integer::parseInt).collect(Collectors.toList());
+       int[] File = listFile.stream().mapToInt(i->i).toArray();
+     
+       for (int l=0; l < cartaoElemento.this.valor; l++)
+       { 
+          int c = 0;
+       
+          String First = String.valueOf(cartaoElemento.this.valor);
+          String [] Comp = First.replaceAll("\\[", "")
+                              .replaceAll("]", "")
+                              .split(","); 
+          
+          int[] Compa = new int[Comp.length];
+          for (int a = 0; a < Comp.length; a++) 
+        {
+          Compa[a] = Integer.parseInt(Comp[a]);
+        }
+//////////
+//////////          
+        for ( int z = 0; z < File.length;z++)
+        {
+            if (Compa[l] == File[z])
+         {
+          output += ".";
+          z=0;
+          
+         }else {
+                z=z+1;
+            }
+       }
+         return output; 
     }
+        return null;      
+ }
 }
+
+//        return null;
+//       }
 
