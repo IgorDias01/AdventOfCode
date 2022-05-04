@@ -1,0 +1,82 @@
+
+package day5;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.lang.*;
+import java.util.Arrays;
+import java.util.Scanner;
+import javax.sound.midi.SysexMessage;
+import static jdk.nashorn.internal.objects.NativeString.replace;
+import sun.text.normalizer.Replaceable;
+
+
+public class Day5 {
+
+    public static void main(String[] args) throws IOException, java.lang.NumberFormatException
+    {
+      int x1 = 0,x2 = 2;
+      int y1 = 1,y2 = 3;
+      int z=0;
+      
+       List<String> Coordenates = new ArrayList<String>();
+       Coordenates = Files.readAllLines(Paths.get("C:\\Test\\Day5WitoutArrows.txt"));//ler ficheiro   
+//       for (int i=0;i < Coordenates.size();i++)
+//       {   
+//           System.out.println(Coordenates.get(i));   
+//       }
+
+       for (int c =0;c < Coordenates.size();c++)
+       {
+           x1=x1;
+           x2=x2;
+           y1=y1;
+           y2=y2;
+           int count1 = 1;
+           int count2 = 1;
+           
+           if (Coordenates.get(x1) == null ? Coordenates.get(x2) == null : Coordenates.get(x1).equals(Coordenates.get(x2)))
+           {
+               System.err.println(".");
+           }
+            x1=x1+4;
+            x2=x2+4;
+            if (Coordenates.get(y1) == null ? Coordenates.get(y2) == null : Coordenates.get(y1).equals(Coordenates.get(y2)))
+            {
+                System.out.println("");
+                count2++;
+            }
+            y1=y1+4;
+            y2=y2+4;
+         
+       }
+        
+        
+       
+ //Testes      
+//       for (int c =0;c < Coordenates.size();c++)
+//       {
+//           x2=x2;
+////           System.out.println(Coordenates.get(x2));   //X2Cycle
+//           x2=x2+4;
+//       }
+//         for (int c =0;c < Coordenates.size();c++)
+//       {
+//           y1=y1;
+////           System.out.println(Coordenates.get(y1));   //Y1Cycle
+//           y1=y1+4;
+//       }
+//          for (int c =0;c < Coordenates.size();c++)
+//       {
+//           y2=y2;
+//           System.out.println(Coordenates.get(y2));   //Y1Cycle
+//           y2=y2+4;
+//       }
+       
+           
+    }
+    
+}
