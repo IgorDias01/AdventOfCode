@@ -1,46 +1,53 @@
-
 package day5;
 
-import com.sun.javafx.print.PrintHelper;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.*;
+
 import java.util.Arrays;
-import java.util.Scanner;
-import javax.sound.midi.SysexMessage;
-import static jdk.nashorn.internal.objects.NativeString.replace;
-import sun.text.normalizer.Replaceable;
 
 
-public class Day5 {
-
+public class Day5 
+{
     public static void main(String[] args) throws IOException, java.lang.NumberFormatException
     {
-      List<String> day5FileContent = new ArrayList<>();
-      day5FileContent = Files.readAllLines(Paths.get("C:\\Test\\Day5.txt"));  
-      String [] Day5 = day5FileContent.toArray(new String[0]);
+       List<String> day5FileContent = new ArrayList<>();
+       day5FileContent = Files.readAllLines(Paths.get("C:\\Test\\Day5.txt"));//Ler o ficheiro  
+       String [] Day5 = day5FileContent.toArray(new String[0]);
    
+       Float[] x1 = Arrays. stream(Day5). map(Float::valueOf). toArray(Float[]::new);//Transformar o ficheiro para ler em float
+       float result = 0;
+       int t =  1;
       
-      int [][] Tabel = new int [10][9]; //Create tabel 
-            for (int i = 0; i < Day5.length; i++)//Creation of Rows
-	    {
-                 System.out.println(Day5[i]);
-	                
-	    }       
-              for (int j = 0;j < Day5.length;j++)
+       int [][] Tabel = new int [10][9]; //Create tabel 
+      
+              for (int j = 0;j < Day5.length;j++)//criar o ciclo para a tabela e as comparaçoes
               {    
-                  
+                  t = j+1;
+                  result = x1[j]-x1[t];
+                  System.out.println(result);
+                      
               }
-                
-	}
+               for (int u = 0;u < Tabel.length;u++)//Criaçao da tabela 
+                  {   
+                      for(int k = 0;k < Tabel[u].length;k++)
+                      {
+                         if (k == 0) 
+                    {
+                       System.out.print("  ");
+                    }
+                       System.out.print('.' + " ");
+                      }
+                       System.out.println();
+                  }
+    }             
+}
 
       
       
-    }
+    
     
 
   
