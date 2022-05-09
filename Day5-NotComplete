@@ -1,13 +1,19 @@
+
 package day5;
 
+import com.sun.javafx.print.PrintHelper;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.lang.*;
 import java.util.Arrays;
-
+import java.util.Scanner;
+import javax.sound.midi.SysexMessage;
+import static jdk.nashorn.internal.objects.NativeString.replace;
+import sun.text.normalizer.Replaceable;
 
 public class Day5 
 {
@@ -18,30 +24,45 @@ public class Day5
        String [] Day5 = day5FileContent.toArray(new String[0]);
    
        Float[] x1 = Arrays. stream(Day5). map(Float::valueOf). toArray(Float[]::new);//Transformar o ficheiro para ler em float
-       float result = 0;
-       int t =  1;
+       float result = 0; //Variavel rsultado
+       int t =  1;//variavel para comparaçao
+       int Row = 0;
+       int Collumn = 0;
       
        int [][] Tabel = new int [10][9]; //Create tabel 
       
               for (int j = 0;j < Day5.length;j++)//criar o ciclo para a tabela e as comparaçoes
               {    
-                  t = j+1;
-                  result = x1[j]-x1[t];
-                  System.out.println(result);
-                      
-              }
-               for (int u = 0;u < Tabel.length;u++)//Criaçao da tabela 
+                  
+                  t = j+1; //Juntar +1
+                  result = x1[j]-x1[t]; //Conta para saber se vai-se de 1 em 1 ou de 0,1 a 0,1
+                  
+                  for (int u = 0;u < Tabel.length;u++)//Criaçao da tabela 
                   {   
+                      
                       for(int k = 0;k < Tabel[u].length;k++)
                       {
                          if (k == 0) 
                     {
-                       System.out.print("  ");
+                       System.out.print(" ");
                     }
                        System.out.print('.' + " ");
                       }
                        System.out.println();
                   }
+                  
+                  if (result <=-1 || result >=1) //Vai de 1 em 1
+                  {
+                      System.out.println("1");
+                  }
+                  else //vai de 0,1 a 0,1
+                  {
+                      System.out.println("0,1");
+                  }
+                  
+             
+              }
+
     }             
 }
 
