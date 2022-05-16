@@ -1,96 +1,52 @@
-
-package day5;
-
 import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-
-
-public class Day5 
+public class Start
 {
-    public static void main(String[] args) throws IOException, java.lang.NumberFormatException,java.lang.NullPointerException
-    {
-               List<String> day5FileContent = new ArrayList<>();//Criar Lista
-               day5FileContent = Files.readAllLines(Paths.get("C:\\Test\\Day5.txt"));//Ler o ficheiro  
-               String [] Day5 = day5FileContent.toArray(new String[0]); //Array da lista para maior facilidade em manipular
-   
-               Double[] x1 = Arrays. stream(Day5). map(Double::valueOf). toArray(Double[]::new);//Lista string para Int para o propostido do problema
-        
-            //https://www.geeksforgeeks.org/stream-map-java-examples/ ->Explicaçao do stream.map
-            //https://mkyong.com/java8/java-8-how-to-convert-a-stream-to-array/ -> Stream to array
-           
-              double result = 0; //Variavel resultado
-              int t =  1;//variavel para comparaçao
-              double Tbl1 = 0,Tbl2 = 0; 
-              double Save;
-              int NotDec = 0;
-              
-       
-              int [][] Tabel = new int [10][10]; //Create tabel 
-       
-              for (int j = 0;j < Day5.length;j++)//criar o ciclo para a tabela e as comparaçoes
-               {    
-                    
-                  t = j+1; //Acresentar 1 
-                   result = x1[j]-x1[t]; //Conta para saber se vai-se de 1 em 1 ou de 0,1 a 0,1
-                  Save = x1[j];
-                  String numberD = String.valueOf(Save);
-                  numberD = numberD.substring(numberD.indexOf("."));
-                  String Decimal = numberD.replace(".", " ");
-                  NotDec = (int) Save;
-                   
-                  if (result <=-1 || result >=1) //Vai de 1 em 1
-                  {
-         
-                      Tbl1 = result;//Variavel vai ficar com o numero do resultado
-                      
-                  }      
-                  else //vai de 0,1 a 0,1
-                  { 
-                      
-                    Tbl2 = result;//Variavel vai ficar com o numero do resultado
-                         
-                  }
-                  
-                             for (int u = 0;u < Tabel.length;u++)//Criaçao da tabela 
-                  {    
-                      
-                      for(int k = 0;k < Tabel[u].length;k++)
-                      {
-                        if (k ==0)//Inicio da linha
-                        {
-                             
-                               System.out.println(" ");//Dar espaço
-                            
-                            
-                        }
-                      } 
-                      if (Tbl1 != 0)//se o Tbl1 for diferente de zero, quer dizer que sera ele a realizar isto,neste caso vai ter que se subtrair 1 por 1
-                      { 
-                          System.out.println(Tbl1);
-                          System.out.println(NotDec);
-                          System.out.println(Decimal);
-                       
-                      }
-                      else if(Tbl2 != 0)//se o Tbl2 for diferente de zero, quer dizer que sera ele a realizar isto,neste caso vai ter que se subtrair 0,1 por 0,1
-                      {
-                           //Ideia:Ir buscar x1[j] e o x1[t], fazer que leia antes so o que esta antes do ponto,marcar esse ponto na tabela.
-                          System.out.println(Tbl2);
-                         
-                      }
-                      
-                       Tbl1 = 0;//Resetar a variavel
-                       Tbl2 = 0;//Resetar a variavel
-                  
-                  }
-             
-              }
 
-    }             
+    public static void main(String arg[]) throws IOException, java.lang.StringIndexOutOfBoundsException
+    {
+
+        List<String> day4FileContent = new ArrayList<>();
+        day4FileContent = Files.readAllLines(Paths.get("C:\\Test\\Day4.txt"));      
+        String[] bingoNum = day4FileContent.get(0).split(",");
+
+        List<card> cards = new ArrayList<>();
+        
+        card card = new card();
+        int position=0;
+        int x=0;
+        for (int i = 2; i < day4FileContent.size(); i++) 
+        {
+           if( day4FileContent.get(i).length() == 0)
+            {
+                cards.add(card);
+                position=0;
+                card = new card();
+            }
+            String[] line = day4FileContent.get(i).split(" ");
+            
+            for (int j = 0; j < line.length; j++) 
+            {  
+                if(line[j].length()==0) continue;
+                card.AddElemento(Integer.parseInt(line[j]), position);
+                position++;
+            }
+            
+        }
+        cards.add(card);
+        
+        for (int i = 0; i < cards.size(); i++) 
+        {  
+            cards.get(i).Pull();
+            System.out.println("");
+        }
+        for (int u=0;u < cards.size();u++)
+        {
+            System.out.println(cards.get(u));
+        }
+      
+    }
 }
-  
- 
-  
